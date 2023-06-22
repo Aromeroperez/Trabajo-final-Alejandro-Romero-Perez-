@@ -1,0 +1,77 @@
+
+DROP DATABASE IF EXISTS LocallyGrown;
+
+CREATE DATABASE IF NOT EXISTS LocallyGrown;
+
+USE LocallyGrown;
+
+CREATE TABLE users (
+  id_usr INT PRIMARY KEY AUTO_INCREMENT,
+  name_usr VARCHAR(255) NOT NULL,
+  surnames VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sellers (
+  id_seller INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL;
+  FOREIGN KEY (user_id) REFERENCES users(id_usr)
+);
+
+CREATE TABLE products (
+  id_prod INT PRIMARY KEY AUTO_INCREMENT,
+  name_prod VARCHAR(255) NOT NULL,
+  description TEXT,
+  price DECIMAL(10, 2) NOT NULL,
+  image_url VARCHAR(255),
+  seller_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (seller_id) REFERENCES sellers(id_seller)
+);
+
+CREATE TABLE carts (
+  id_cart INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id_usr)
+);
+
+CREATE TABLE cart_items (
+  id_item INT PRIMARY KEY AUTO_INCREMENT,
+  cart_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  FOREIGN KEY (cart_id) REFERENCES carts(id_cart),
+  FOREIGN KEY (product_id) REFERENCES products(id_prod)
+);
+
+CREATE TABLE orders (
+  id_order INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id_usr)
+);
+
+CREATE TABLE order_items (
+  id_item INT PRIMARY KEY AUTO_INCREMENT,
+  order_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders(id_order),
+  FOREIGN KEY (product_id) REFERENCES products(id_prod)
+);
+
+CREATE TABLE purchase_details (
+  id_purchase INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  postal_code VARCHAR(20) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  total_amount DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id_usr)
+);

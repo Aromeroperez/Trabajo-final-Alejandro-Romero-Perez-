@@ -1,0 +1,340 @@
+/*-----------------------------------*\
+    #MAIN STYLE
+  \*-----------------------------------*/
+
+/**
+   * main container 
+   */
+
+.container {
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.heading ion-icon {
+  font-size: 40px;
+}
+
+.item-flex {
+  display: flex;
+  flex-grow: 1;
+}
+
+/**
+   * checkout section style 
+   */
+
+.checkout {
+  width: 70%;
+  padding: 40px 60px;
+  background: #161d23;
+  border-right: 1px solid hsl(0, 0%, 90%);
+}
+
+.section-heading {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.payment-form {
+  margin-bottom: 40px;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.payment-method .method {
+  border: 1px solid hsl(0, 0%, 64%);
+  border-radius: 5px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.payment-method .selected {
+  border-color: white;
+}
+
+.payment-method .method ion-icon {
+  font-size: 20px;
+}
+
+.payment-method .method .checkmark {
+  margin-left: auto;
+  color: white;
+}
+
+.payment-method .method .fill {
+  color: white;
+}
+
+.label-default {
+  padding-left: 10px;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.expire-date label {
+  margin-top: 1rem;
+}
+
+.input-default {
+  background: white;
+  border-radius: 5px;
+  color: hsl(0, 0%, 30%);
+}
+
+.payment-form input {
+  letter-spacing: 3px;
+  width: 96%;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cardholder-name,
+.card-number {
+  margin-bottom: 20px;
+}
+
+.card-number input,
+.cvv input {
+  letter-spacing: 3px;
+}
+
+.cvv input {
+  margin-left: -0.8rem;
+}
+
+.input-flex {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.input-flex .expire-date,
+.input-flex .cvv {
+  width: 50%;
+}
+
+.expire-date .input-flex {
+  color: hsl(0, 0%, 62%);
+  gap: 13px;
+}
+
+.expire-date .input-flex input {
+  text-align: center;
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+.btn:hover {
+  color: white;
+  background: var(--blue);
+  border: 1px solid #1ee761;
+}
+
+.btn-primary {
+  font-size: 15px;
+  background: white;
+  font-weight: 500;
+  color: black;
+  padding: 13px 45px;
+}
+
+.btn-primary b {
+  margin-right: 10px;
+}
+
+/**
+   * cart section style
+   */
+
+.cart {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cart-item-box {
+  padding: 40px 60px;
+  margin-bottom: auto;
+}
+
+.product-card:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.product-card .card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.card .product-img {
+  border-radius: 5px;
+}
+
+.card .detail .product-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.quantity {
+  color: white;
+}
+
+.card .detail .wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.product-qty {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-qty button {
+  background: white;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-qty button:active,
+.product-close-btn:active ion-icon {
+  transform: scale(0.95);
+}
+
+.product-qty button ion-icon {
+  --ionicon-stroke-width: 60px;
+  font-size: 10px;
+}
+
+.product-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.product-close-btn ion-icon {
+  font-size: 25px;
+  color: hsl(0, 0%, 64%);
+}
+
+.product-close-btn:hover ion-icon {
+  color: hsl(0, 77%, 60%);
+}
+
+.discount-token {
+  padding: 40px 60px;
+  border-top: 1px solid hsl(0, 0%, 90%);
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+  border-left: 1px solid hsl(0, 0%, 90%);
+  margin-left: 66.65%;
+}
+
+.wrapper-flex {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.wrapper-flex input {
+  padding: 12px 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.btn-outline {
+  padding: 10px 25px;
+  border: 1px solid #1ee761;
+  color: #161d23;
+}
+
+.btn-outline:hover {
+  background: var(--blue);
+  color: white;
+}
+
+.amount {
+  padding: 40px 60px;
+  border-left: 1px solid hsl(0, 0%, 90%);
+  border-top: 1px solid hsl(0, 0%, 90%);
+  margin-left: 66.66%;
+}
+
+.amount > div {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.amount > div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.amount .total {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.info{
+  margin-top: 30px;
+}
+
+.info .input-flex{
+  margin-top: 20px;
+}
+
+.price {
+  color: white;
+}
+
+.color-hola {
+  color: white;
+}
+
+.product-container-scroll {
+  height: 370px;
+  overflow-y: auto;
+}

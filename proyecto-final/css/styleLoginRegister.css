@@ -1,0 +1,270 @@
+/*----------------------*\
+      Login/Register
+\*----------------------*/
+
+form {
+    display: block;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.ver {
+    cursor: pointer;
+    width: 22px;
+    position: absolute;
+    right: 11%;
+    top: 56%;
+}
+
+.ver-register {
+  cursor: pointer;
+  width: 22px;
+  position: absolute;
+  right: 11%;
+  top: 78%;
+}
+
+.ver-register-repeat {
+  cursor: pointer;
+  width: 22px;
+  position: absolute;
+  right: 11%;
+  top: 90%;
+}
+
+.ver-register-sell {
+  cursor: pointer;
+  width: 22px;
+  position: absolute;
+  right: 11%;
+  top: 97%;
+}
+
+.ver-register-repeat-sell {
+  cursor: pointer;
+  width: 22px;
+  position: absolute;
+  right: 11%;
+  top: 110%;
+}
+
+.desaparece{
+    display: none;
+}
+
+.background-activo{
+    background-color: #161d23;
+}
+
+.boton-registrarse {
+  cursor: pointer;
+}
+
+input {
+    background: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px -0.5rem;
+    width: 100%;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.form-container {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.height-form {
+    height: 130%;
+}
+
+.registrarse-form {
+  display: none;
+}
+
+.login{
+  cursor: pointer;
+}
+
+.pequeño {
+    margin-top: 0.7rem;
+    width: 75px;
+}
+
+.container-register {
+  margin-left: -1000%;
+}
+
+.move-login-container {
+  height: 100vh;
+  margin-top: -6%;
+}
+
+.container-login {
+    border-radius: 50px;
+    display: flex;
+    background-color: #161d23;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    max-width: 400px;
+    max-height: 400px;
+    height: 400px;
+    padding: 20px;
+    position: relative;
+    top: 20vh;
+    justify-content: center;
+}
+
+.container-login a{
+  padding: 0.7rem;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+}
+
+.vendedor-container{
+  margin-top: -16.5rem;
+  position: absolute;
+} 
+
+.vendedor {
+  margin-top: 18px;
+}
+
+/*----------------------*\
+         Buttons
+\*----------------------*/
+
+button {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+
+.btn-3 {
+    background: #03A64A;
+    background: linear-gradient(to right, #03A64A, #8EC758);
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    
+  }
+  .btn-3 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .btn-3:before,
+  .btn-3:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: linear-gradient(to right, #03A64A, #8EC758);
+    transition: all 0.3s ease;
+  }
+  .btn-3:before {
+    height: 0%;
+    width: 2px;
+  }
+  .btn-3:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-3:hover{
+    background: transparent;
+    box-shadow: none;
+  }
+  .btn-3:hover:before {
+    height: 100%;
+  }
+  .btn-3:hover:after {
+    width: 100%;
+  }
+  .btn-3 span:hover{
+    color: #000;
+  }
+  .btn-3 span:before,
+  .btn-3 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #03A64A, #8EC758);
+    transition: all 0.3s ease;
+  }
+  .btn-3 span:before {
+    width: 2px;
+    height: 0%;
+  }
+  .btn-3 span:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-3 span:hover:before {
+    height: 100%;
+  }
+  .btn-3 span:hover:after {
+    width: 100%;
+  }
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+
+.vendedor{
+  margin-top: 48rem;
+  margin-left: 2rem;
+}
