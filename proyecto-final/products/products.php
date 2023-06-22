@@ -93,21 +93,6 @@
 
     <main>
 
-
-        <form method="POST" action="busqueda.php">
-            <input type="text" name="nombre" placeholder="Buscar por nombre">
-            <input type="number" name="precio_min" placeholder="Precio mínimo">
-            <input type="number" name="precio_max" placeholder="Precio máximo">
-            <select name="orden">
-                <option value="asc">Precio más barato primero</option>
-                <option value="desc">Precio más caro primero</option>
-                <option value="relevancia">Ordenar por relevancia</option>
-            </select>
-            <button class="button btn-3" name="search" type="submit">Filtrar</button>
-        </form>
-
-
-
         <?php
         include('generateproducts.php');
         if (isset($stmt)): ?>
@@ -140,8 +125,7 @@
                                         <input type="hidden" name="product_id" value="<?php echo $row['id_prod']; ?>">
                                         <input type="hidden" name="product_name" value="<?php echo $row['name_prod']; ?>">
                                         <input type="hidden" name="product_price" value="<?php echo $row['price']; ?>">
-                                        <button type="submit" class="button btn-3" name="add_product"><span>Añadir al
-                                                carrito</span>
+                                        <button type="submit" class="button btn-3" name="add_product"><span>Añadir al carrito</span>
                                         </button>
                                     </form>
                                 </div>

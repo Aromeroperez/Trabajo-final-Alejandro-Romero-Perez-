@@ -1,0 +1,76 @@
+.titulo h1{
+  color: white;
+}
+
+h2{
+  color: white;
+  border-bottom: 1px solid white;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 100%;
+    min-height: 480px;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.pedidos-scroll{
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.linea-1{
+  display: flex;
+  align-items: center;
+}
+
+.linea-1 h3{
+  color: white;
+  margin-right: 30px;
+}
+
+.linea-1 p{
+  color: white;
+  margin-right: 30px;
+}
+
+.productos-container{
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+
+}
+.productos-container h2{
+  color: white;
+}
+.productos-scroll{
+  max-height: 400px;
+  overflow-y: auto;
+}
+.productos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+
+.productos img {
+  margin-right: 30px; 
+  width: 100px; 
+  height: 100px;
+}
+
+.productos h4 {
+  color: white;
+  margin-right: 30px; 
+}
+
+.productos p {
+  color: white;
+  margin-right: 30px; 
+}
+
+

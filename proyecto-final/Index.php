@@ -105,6 +105,7 @@
                 </div>
             </div>
         </div>
+
         <?php
         include('products/generaterandom3.php');
         if (isset($stmt)): ?>
@@ -116,23 +117,30 @@
                             <div class="fav-product">
                                 <img src="<?php echo $row['image_url']; ?>">
                                 <div class="fav-product-text">
-                                    <h3>
-                                        <?php echo $row['name_prod']; ?>
-                                    </h3>
-                                    <p>
-                                        <?php echo $row['price']; ?>
-                                        €
-                                    </p>
-                                    <p>
+                                    <div class="two-columns">
+                                        <div class="column">
+                                            <h3>
+                                                <?php echo $row['name_prod']; ?>
+                                            </h3>
+                                        </div>
+                                        <div class="column">
+                                            <p>
+                                                <?php echo $row['price']; ?>
+                                                €
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="descripcion-producto">
                                         <?php echo $row['description']; ?>
                                     </p>
-                                    <form method="POST" action="../products/addproducts.php">
+
+                                    <form method="POST" action="products/addproducts.php">
                                         <input type="hidden" name="product_id" value="<?php echo $row['id_prod']; ?>">
                                         <input type="hidden" name="product_name" value="<?php echo $row['name_prod']; ?>">
                                         <input type="hidden" name="product_price" value="<?php echo $row['price']; ?>">
-                                        <button type="submit" class="button btn-3"
-                                            name="add_product"><span>Añadir al carrito</span>
- 
+                                        <button type="submit" class="button btn-3" name="add_product"><span>Añadir al carrito</span>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

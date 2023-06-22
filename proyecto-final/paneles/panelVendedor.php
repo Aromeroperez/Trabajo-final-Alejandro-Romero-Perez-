@@ -86,75 +86,77 @@
             </div>
         </div>
     </header>
+
+    <div class="titulo">
     <h1 style="text-align: center;">Bienvenido a tu panel de vendedor</h1>
-
-    <h2>Tus productos</h2>
-
+    </div>
     <div class="container">
+        <div class="productos-container">
 
-        <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+            <h2>Tus productos</h2>
 
-        if (isset($_SESSION["id_usr"])) {
-
-            $userId = $_SESSION["id_usr"];
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "locallygrown";
-
-            // CONEXION A LA DB
-            try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                $sql = "SELECT id_seller FROM sellers WHERE user_id = :userId";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(":userId", $userId);
-                $stmt->execute();
-
-                if ($stmt->rowCount() > 0) {
-
-                    // Obtener los productos del vendedor
-                    $vendedorId = $stmt->fetchColumn(); // Obtenemos el ID del vendedor
-                    $sql = "SELECT * FROM products WHERE seller_id = :vendedorId";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bindParam(':vendedorId', $vendedorId, PDO::PARAM_INT);
-                    $stmt->execute();
-
-                    // Verificar si se encontraron productos
-                    if ($stmt->rowCount() > 0) {
-                        // Mostrar los productos
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<div class="productos-container">';
-                            echo '<div class="productos">';
-                            echo '   <img src="' . $row['image_url'] . '" alt="' . $row['name_prod'] . '" style="width: 100px; height: 100px;">';
-                            echo '   <p>' . $row['name_prod'] . '</p>';
-                            echo '<button class="button btn-3" onclick="location.href = \'modificarForm.php?id_prod=' . $row['id_prod'] . '\';"><span>Modificar</span></button>';
-                            echo '<form action="eliminarProducto.php" method="post">';
-                            echo '<input type="hidden" name="prod_id" value="' . $row['id_prod'] . '">';
-                            echo '<button type="submit" class="btn-d3"><span>Eliminar</span></button>"';
-                            echo '</form>';
-                            echo '</div>';
-                            echo '</div>';
-
-
-                        }
-                    } else {
-                        echo "No se encontraron productos para este vendedor.";
-                    }
-                }
-            } catch (PDOException $e) {
-                echo "Error al conectar a la base de datos: " . $e->getMessage();
+            <div class="productos-scroll">
+            <?php
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
             }
 
-            $conn = null;
-        }
-        ?>
+            if (isset($_SESSION["id_usr"])) {
 
+                $userId = $_SESSION["id_usr"];
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "locallygrown";
 
+                // CONEXION A LA DB
+                try {
+                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $sql = "SELECT id_seller FROM sellers WHERE user_id = :userId";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindParam(":userId", $userId);
+                    $stmt->execute();
+
+                    if ($stmt->rowCount() > 0) {
+
+                        // Obtener los productos del vendedor
+                        $vendedorId = $stmt->fetchColumn(); // Obtenemos el ID del vendedor
+                        $sql = "SELECT * FROM products WHERE seller_id = :vendedorId";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':vendedorId', $vendedorId, PDO::PARAM_INT);
+                        $stmt->execute();
+
+                        // Verificar si se encontraron productos
+                        if ($stmt->rowCount() > 0) {
+                            // Mostrar los productos
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<div class="productos">';
+                                echo '<img src="' . $row['image_url'] . '" alt="' . $row['name_prod'] . '">';
+                                echo '<p>' . $row['name_prod'] .'</p>';
+                                echo '<p>' . $row['price'] . '€' . '</p>'; 
+                                echo '<button class="button btn-5" onclick="location.href = \'modificarForm.php?id_prod=' . $row['id_prod'] . '\';"><span>Modificar</span></button>';
+                                echo '<form action="eliminarProducto.php" method="post">';
+                                echo '<input type="hidden" name="prod_id" value="' . $row['id_prod'] . '">';
+                                echo '<button type="submit" class="btn-4"><span>Eliminar</span></button>';
+                                echo '</form>';
+                                echo '</div>';
+                            }
+                        } else {
+                            echo '<span style="color: white;">Aún no tiene ningún producto.</span>';
+
+                        }
+                    }
+                } catch (PDOException $e) {
+                    echo "Error al conectar a la base de datos: " . $e->getMessage();
+                }
+
+                $conn = null;
+            }
+            ?>
+        </div>
+        </div>
         <div class="formulario">
             <h1>Añadir Producto</h1>
             <form action="newProduct.php" method="POST" enctype="multipart/form-data">
@@ -166,6 +168,16 @@
             </form>
         </div>
     </div>
+
+    <footer>
+        <div class="container-footer">
+            <div class="column">
+                <div class="texto-footer">
+                    <span>© 2023 Todos los derechos reservados</span>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

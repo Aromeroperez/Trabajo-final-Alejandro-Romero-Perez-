@@ -18,7 +18,7 @@ CREATE TABLE sellers (
   id_seller INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   address VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(20) NOT NULL;
+  phone_number VARCHAR(20) ,
   FOREIGN KEY (user_id) REFERENCES users(id_usr)
 );
 
@@ -68,10 +68,12 @@ CREATE TABLE order_items (
 CREATE TABLE purchase_details (
   id_purchase INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
+  order_id int not null,
   address VARCHAR(255) NOT NULL,
   postal_code VARCHAR(20) NOT NULL,
   city VARCHAR(255) NOT NULL,
   total_amount DECIMAL(10, 2) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (order_id) REFERENCES orders(id_order),
   FOREIGN KEY (user_id) REFERENCES users(id_usr)
 );

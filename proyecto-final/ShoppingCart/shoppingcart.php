@@ -126,7 +126,7 @@
 
                     </div>
 
-                    <form action="#">
+                    <form action="submitPedido.php" method="POST">
 
                         <div class="cardholder-name">
                             <input placeholder="Nombre del titular" type="text" name="cardholder-name"
@@ -164,26 +164,26 @@
                         <div class="info">
                             <div class="address">
                                 <input placeholder="Dirección" type="text" name="address" id="address"
-                                    class="input-default">
+                                    class="input-default" required>
                             </div>
                             <div class="input-flex">
                                 <div class="city">
-                                    <input placeholder="Ciudad" type="text" name="city" id="city" class="input-default">
+                                    <input placeholder="Ciudad" type="text" name="city" id="city" class="input-default" required>
                                 </div>
 
                                 <div class="postal-code">
                                     <input placeholder="Código Postal" type="number" name="postal-code" id="postal-code"
-                                        class="input-default">
+                                        class="input-default" required>
                                 </div>
                             </div>
                         </div>
+                        <button class="btn btn-primary" type="submit">
+                        <b>Pagar</b> <span><span id="payAmount">0.00</span>€</span>
+                        </button>
                     </form>
 
                 </div>
 
-                <button class="btn btn-primary">
-                    <b>Pagar</b> <span><span id="payAmount">0.00</span>€</span>
-                </button>
 
             </section>
 
