@@ -8,7 +8,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Verificar si se recibió un valor para el id_item
+    // Verificar si se recibió un valor para el prod_id
     if (isset($_POST['prod_id'])) {
         $prod_id = $_POST['prod_id'];
 
@@ -17,11 +17,11 @@ try {
         $stmt->bindParam(':prod_id', $prod_id);
         $stmt->execute();
 
-        // Redirigir a la página shoppingcart.php
-        header("Location: panelVendedor.php");
+        // Redirigir a la página verificarEliminar.php
+        header("Location: confirmacionEliminar.php");
         exit();
     } else {
-        // No se recibió el id_item, redirigir a la página shoppingcart.php
+        // No se recibió el prod_id, redirigir a la página panelVendedor.php
         header("Location: panelVendedor.php");
         exit();
     }

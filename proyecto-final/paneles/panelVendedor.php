@@ -132,7 +132,7 @@
                             echo '<div class="productos">';
                             echo '   <img src="' . $row['image_url'] . '" alt="' . $row['name_prod'] . '" style="width: 100px; height: 100px;">';
                             echo '   <p>' . $row['name_prod'] . '</p>';
-                            echo '   <button class="button btn-3" onclick="location.href = \'modificar.php\';"><span>Modificar</span></button>';
+                            echo '<button class="button btn-3" onclick="location.href = \'modificarForm.php?id_prod=' . $row['id_prod'] . '\';"><span>Modificar</span></button>';
                             echo '<form action="eliminarProducto.php" method="post">';
                             echo '<input type="hidden" name="prod_id" value="' . $row['id_prod'] . '">';
                             echo '<button type="submit" class="btn-d3"><span>Eliminar</span></button>"';
