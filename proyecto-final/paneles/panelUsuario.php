@@ -32,14 +32,14 @@
                     }
 
                     if (isset($_SESSION["id_usr"])) {
-                        // Verificar si el usuario tiene un ID de vendedor
+                        # Verificar si el usuario tiene un ID de vendedor
                         $userId = $_SESSION["id_usr"];
                         $servername = "localhost";
                         $username = "root";
-                        $password = "";
-                        $dbname = "locallygrown";
+                        $password = "Passw0rd!";
+                        $dbname = "LocallyGrown";
 
-                        // CONEXION A LA DB
+                        #Conexion
                         try {
                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -50,7 +50,7 @@
                             $stmt->execute();
 
                             if ($stmt->rowCount() > 0) {
-                                // El usuario es un vendedor
+                                # El usuario es un vendedor
                                 echo '
                 <a href="../ShoppingCart/shoppingcart.php"><img src="../img/icons8-shopping-cart-48.png" alt=""></a>
                 <div class="dropdown">
@@ -61,7 +61,7 @@
                 </div>
             </div>';
                             } else {
-                                // El usuario es un usuario normal
+                                # El usuario es un usuario normal
                                 echo '
                 <a href="../ShoppingCart/shoppingcart.php"><img src="../img/icons8-shopping-cart-48.png" alt=""></a>
                 <div class="dropdown">
@@ -78,7 +78,7 @@
 
                         $conn = null;
                     } else {
-                        // Mostrar el botón de inicio de sesión
+                        # Mostrar el botón de inicio de sesión
                         echo '<a href="../login/login.php">Login</a>';
                     }
                     ?>
@@ -105,14 +105,14 @@
                     $userId = $_SESSION["id_usr"];
                     $servername = "localhost";
                     $username = "root";
-                    $password = "";
-                    $dbname = "locallygrown";
+                    $password = "Passw0rd!";
+                    $dbname = "LocallyGrown";
 
                     try {
                         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                        // Obtener los pedidos del usuario
+                        # Buscar los pedidos del usuario
                         $sql = "SELECT orders.id_order, orders.created_at
                 FROM orders
                 WHERE orders.user_id = :userId";
@@ -121,7 +121,7 @@
                         $stmt->execute();
 
                         if ($stmt->rowCount() > 0) {
-                            // Recorrer los pedidos del usuario
+                            # Recorrer todos los pedidos del usuario
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 $orderId = $row['id_order'];
                                 $orderDate = $row['created_at'];
@@ -133,7 +133,7 @@
                                 echo '</div>';
 
 
-                                // Obtener los detalles de cada pedido
+                                # Obtener los detalles de cada pedido
                                 $sqlDetails = "SELECT order_items.quantity, products.name_prod, products.price, products.image_url
                                FROM order_items
                                INNER JOIN products ON order_items.product_id = products.id_prod
@@ -143,7 +143,7 @@
                                 $stmtDetails->execute();
 
                                 if ($stmtDetails->rowCount() > 0) {
-                                    // Mostrar los detalles de cada pedido
+                                    # Mostrar los detalles de cada pedido
                                     while ($rowDetails = $stmtDetails->fetch(PDO::FETCH_ASSOC)) {
                                         $quantity = $rowDetails['quantity'];
                                         $productName = $rowDetails['name_prod'];
@@ -161,7 +161,7 @@
                                     echo '<span style="color: white;">No se encontraron productos en este pedido.</span>';
                                 }
 
-                                echo '</div>'; // Cerrar div del pedido
+                                echo '</div>'; 
                             }
                         } else {
                             echo '<p>No tiene ningún pedido.</p>';
@@ -172,7 +172,6 @@
 
                     $conn = null;
                 } else {
-                    // Mostrar el botón de inicio de sesión
                     echo '<Error';
                 }
                 ?>

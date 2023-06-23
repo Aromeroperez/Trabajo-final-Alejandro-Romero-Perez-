@@ -40,7 +40,7 @@
                     <form class="modificar-form" action="submitModificar.php" method="post">
                         <h1>Modificar Producto</h1>
                         <?php
-                        $id_prod = $_GET['id_prod']; // Recuperar el id del producto desde la URL
+                        $id_prod = $_GET['id_prod']; 
                         ?>
                         <input type="hidden" name="id_prod" value="<?php echo $id_prod; ?>">
                         <select name="campo" class="select" id="campo" placeholder="Campo a modificar">

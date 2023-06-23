@@ -32,14 +32,14 @@
                     }
 
                     if (isset($_SESSION["id_usr"])) {
-                        // Verificar si el usuario tiene un ID de vendedor
+                        # Verificar si el usuario tiene un ID de vendedor
                         $userId = $_SESSION["id_usr"];
                         $servername = "localhost";
                         $username = "root";
-                        $password = "";
-                        $dbname = "locallygrown";
+                        $password = "Passw0rd!";
+                        $dbname = "LocallyGrown";
 
-                        // CONEXION A LA DB
+                        # Conexion
                         try {
                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -50,7 +50,7 @@
                             $stmt->execute();
 
                             if ($stmt->rowCount() > 0) {
-                                // El usuario es un vendedor
+                                # El usuario es un vendedor
                                 echo '
                 <a href="../ShoppingCart/shoppingcart.php"><img src="../img/icons8-shopping-cart-48.png" alt=""></a>
                 <div class="dropdown">
@@ -61,7 +61,7 @@
                 </div>
             </div>';
                             } else {
-                                // El usuario es un usuario normal
+                                # El usuario es un usuario normal
                                 echo '
                 <a href="../ShoppingCart/shoppingcart.php"><img src="../img/icons8-shopping-cart-48.png" alt=""></a>
                 <div class="dropdown">
@@ -78,7 +78,7 @@
 
                         $conn = null;
                     } else {
-                        // Mostrar el botón de inicio de sesión
+                        # Mostrar el botón de inicio de sesión
                         echo '<a href="../login/login.php">Login</a>';
                     }
                     ?>
@@ -106,10 +106,10 @@
                 $userId = $_SESSION["id_usr"];
                 $servername = "localhost";
                 $username = "root";
-                $password = "";
-                $dbname = "locallygrown";
+                $password = "Passw0rd!";
+                $dbname = "LocallyGrown";
 
-                // CONEXION A LA DB
+                # Conexion
                 try {
                     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -121,16 +121,16 @@
 
                     if ($stmt->rowCount() > 0) {
 
-                        // Obtener los productos del vendedor
-                        $vendedorId = $stmt->fetchColumn(); // Obtenemos el ID del vendedor
+                        # Obtener los productos del vendedor
+                        $vendedorId = $stmt->fetchColumn(); 
                         $sql = "SELECT * FROM products WHERE seller_id = :vendedorId";
                         $stmt = $conn->prepare($sql);
                         $stmt->bindParam(':vendedorId', $vendedorId, PDO::PARAM_INT);
                         $stmt->execute();
 
-                        // Verificar si se encontraron productos
+                        # Verificar si se encontraron productos
                         if ($stmt->rowCount() > 0) {
-                            // Mostrar los productos
+                            # Mostrar los productos
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<div class="productos">';
                                 echo '<img src="' . $row['image_url'] . '" alt="' . $row['name_prod'] . '">';

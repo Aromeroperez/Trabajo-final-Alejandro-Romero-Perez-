@@ -3,12 +3,10 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $user_id = $_SESSION['id_usr'];
-
-// Obtener el ID del carrito del usuario
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "locallygrown";
+$password = "Passw0rd!";
+$dbname = "LocallyGrown";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -21,7 +19,7 @@ try {
     if ($stmt->rowCount() > 0) {
         $cart_id = $stmt->fetchColumn();
 
-        // Obtener los productos del carrito con sus detalles
+        # Obtener los productos del carrito con sus detalles
         $stmt = $conn->prepare("SELECT p.id_prod, ci.quantity
                                    FROM cart_items ci
                                    INNER JOIN products p ON ci.product_id = p.id_prod
@@ -30,14 +28,14 @@ try {
         $stmt->execute();
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Insertar en la tabla 'orders' el usuario y la fecha de creación
+        # Insertar en la tabla 'orders' el usuario y la fecha de creación
         $stmt = $conn->prepare("INSERT INTO orders (user_id) VALUES (:user_id)");
         $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
 
         $order_id = $conn->lastInsertId();
 
-        // Insertar en la tabla 'order_items' los productos del carrito y la cantidad
+        # Insertar en la tabla 'order_items' los productos del carrito y la cantidad
         foreach ($products as $product) {
             $product_id = $product['id_prod'];
             $quantity = $product['quantity'];
@@ -49,12 +47,12 @@ try {
             $stmt->execute();
         }
 
-        // Obtener los datos del formulario
+        # Obtener los datos del formulario
         $address = $_POST['address'];
         $city = $_POST['city'];
         $postal_code = $_POST['postal-code'];
 
-        // Obtener los productos del carrito con sus detalles
+        # Obtener los productos del carrito con sus detalles
         $stmt = $conn->prepare("SELECT p.id_prod, p.price, ci.quantity
                            FROM cart_items ci
                            INNER JOIN products p ON ci.product_id = p.id_prod
@@ -65,7 +63,7 @@ try {
 
         $total = 0;
 
-        // Calcular el total de la compra
+        # Calcular el total de la compra
         foreach ($products as $product) {
             $price = $product['price'];
             $quantity = $product['quantity'];
@@ -73,7 +71,7 @@ try {
             $total += $subtotal;
         }
 
-        // Insertar en la tabla 'purchase_details' los datos del formulario y el total de la compra
+        # Insertar en la tabla 'purchase_details' los datos del formulario y el total de la compra
         $stmt = $conn->prepare("INSERT INTO purchase_details (user_id, order_id, address, city, postal_code, total_amount) VALUES (:user_id, :order_id, :address, :city, :postal_code, :total_amount)");
         $stmt->bindParam(':user_id', $user_id);
         $stmt->bindParam(':order_id', $order_id);
@@ -83,7 +81,7 @@ try {
         $stmt->bindParam(':total_amount', $total);
         $stmt->execute();
 
-        // Vaciar el carrito eliminando los items del mismo
+        # Vaciar el carrito eliminando los items del mismo
         $stmt = $conn->prepare("DELETE FROM cart_items WHERE cart_id = :cart_id");
         $stmt->bindParam(':cart_id', $cart_id);
         $stmt->execute();

@@ -3,16 +3,17 @@
 include('../clases/users.php');
 include('login.php');
 
-# DATOS DEL FORMULARIO
+
 $users_email = $_POST["email"];
 $users_password = $_POST["password"];
 
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "locallygrown";
+$password = "Passw0rd!";
+$dbname = "LocallyGrown";
 
 # CONEXION A LA DB
+
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

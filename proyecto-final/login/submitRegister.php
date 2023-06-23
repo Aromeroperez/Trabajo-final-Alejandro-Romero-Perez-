@@ -3,14 +3,13 @@
 include('../clases/users.php');
 include('register.php');
 
-# DATOS DEL FORMULARIO
 $users_name = $_POST["name"] ?? "";
 $users_surname = $_POST["surname"] ?? "";
 $users_email = $_POST["email"] ?? "";
 $users_password = $_POST["password"] ?? "";
 $users_password_confirm = $_POST["password_confirm"] ?? "";
 
-# VERIFICACIONES DE DATOS
+# Verificaciones
 $errors = array();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($users_name)) {
@@ -37,19 +36,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors[] = "Las contraseñas no coinciden.";
   }
 
-  # SI NO HAY ERRORES, INSERTAR EN LA BD
+  # Si no hay errores insertar
   if (count($errors) == 0) {
     $created_at = date('Y-m-d H:i:s');
-    $hashed_password = password_hash($users_password, PASSWORD_DEFAULT); # Hash de la contraseña
+    # Hash de la contraseña
+    $hashed_password = password_hash($users_password, PASSWORD_DEFAULT); 
 
     $users = new users($users_name, $users_surname, $users_email, $hashed_password, $created_at);
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
-    $dbname = "locallygrown";
+    $password = "Passw0rd!";
+    $dbname = "LocallyGrown";
 
-    # CONEXION A LA DB
+    # Conexion bbdd
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = null;
 
   } else {
-    #ERRORES
+    #errores
     foreach ($errors as $error) {
       echo $error . "<br>";
     }

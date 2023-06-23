@@ -33,14 +33,14 @@
                     }
 
                     if (isset($_SESSION["id_usr"])) {
-                        // Verificar si el usuario tiene un ID de vendedor
+                        # Verificar si el usuario tiene un ID de vendedor
                         $userId = $_SESSION["id_usr"];
                         $servername = "localhost";
                         $username = "root";
-                        $password = "";
-                        $dbname = "locallygrown";
+                        $password = "Passw0rd!.";
+                        $dbname = "LocallyGrown";
 
-                        // CONEXION A LA DB
+                        # Conexion
                         try {
                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -51,7 +51,7 @@
                             $stmt->execute();
 
                             if ($stmt->rowCount() > 0) {
-                                // El usuario es un vendedor
+                                # El usuario es un vendedor
                                 echo '
                 <a href="../ShoppingCart/shoppingcart.php"><img src="../img/icons8-shopping-cart-48.png" alt=""></a>
                 <div class="dropdown">
@@ -62,7 +62,7 @@
                 </div>
             </div>';
                             } else {
-                                // El usuario es un usuario normal
+                                # El usuario es un usuario normal
                                 echo '
                 <a href="../ShoppingCart/shoppingcart.php"><img src="../img/icons8-shopping-cart-48.png" alt=""></a>
                 <div class="dropdown">
@@ -79,7 +79,7 @@
 
                         $conn = null;
                     } else {
-                        // Mostrar el botón de inicio de sesión
+                        # Mostrar el botón de inicio de sesión
                         echo '<a href="../login/login.php">Login</a>';
                     }
                     ?>

@@ -1,11 +1,10 @@
 <?php
 
 
-// Configurar conexión con PDO
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "locallygrown";
+$password = "Passw0rd!";
+$dbname = "LocallyGrown";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

@@ -18,7 +18,8 @@ CREATE TABLE sellers (
   id_seller INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   address VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(20) ,
+  phone_number INT NOT NULL ,
+  CIF VARCHAR(255),
   FOREIGN KEY (user_id) REFERENCES users(id_usr)
 );
 
