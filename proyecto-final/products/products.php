@@ -37,7 +37,7 @@
                         $userId = $_SESSION["id_usr"];
                         $servername = "localhost";
                         $username = "root";
-                        $password = "Passw0rd!.";
+                        $password = "Passw0rd!";
                         $dbname = "LocallyGrown";
 
                         # Conexion

@@ -164,7 +164,7 @@
                                 echo '</div>'; 
                             }
                         } else {
-                            echo '<p>No tiene ningún pedido.</p>';
+                            echo '<span style="color: white;">No tiene ningún pedido.</span>';
                         }
                     } catch (PDOException $e) {
                         echo "Error al conectar a la base de datos: " . $e->getMessage();
