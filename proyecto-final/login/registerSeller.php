@@ -40,7 +40,7 @@
                     <input type="text" name="surname" placeholder="Apellidos"/>
                     <input type="mail" name="email" placeholder="Email"/>
                     <input type="text" name="address" placeholder="Dirección del vendedor"/>
-                    <input type="number" name="phonenumber" placeholder="Teléfono"/>
+                    <input type="number" name="phonenumber" maxlength="9" placeholder="Teléfono"/>
                     <input class="password-register-sell" type="password" name="password" placeholder="Contraseña"/>
                     <input class="password-register-repeat-sell" type="password" name="password_confirm" placeholder="Repite la Contraseña"/>
                     <img class="ver-register-sell" src="../img/visibility_FILL0_wght400_GRAD0_opsz48.svg">

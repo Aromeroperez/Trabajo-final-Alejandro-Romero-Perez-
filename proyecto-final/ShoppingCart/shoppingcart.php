@@ -156,7 +156,7 @@
 
                             <div class="cvv">
                                 <label for="cvv" class="label-default">CVV</label>
-                                <input type="number" name="cvv" id="cvv" class="input-default">
+                                <input type="number" name="cvv" id="cvv" maxlength="3" class="input-default">
                             </div>
 
                         </div>
